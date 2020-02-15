@@ -6,9 +6,13 @@ use App\Car;
 use Faker\Generator as Faker;
 
 $factory->define(Car::class, function (Faker $faker) {
+
+    $faker->addProvider(new \Faker\Provider\Fakecar($faker));
+    $v = $faker->vehicleArray();
+
     return [
-        'model' => $faker->regexify('('.$faker->colorName.'|'.$faker->firstNameMale.'|'.$faker->firstNameMale.')'),
-        'registration_plate' => strtoupper($faker->unique()->bothify('#### ???')),
-        'seat_number' => $faker->regexify('(3|5)')
+        'model' => $faker->vehicleModel,
+        'registration_plate' => $faker->vehicleRegistration,
+        'door_number' => $faker->vehicleDoorCount
     ];
 });
