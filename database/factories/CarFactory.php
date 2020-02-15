@@ -8,7 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Car::class, function (Faker $faker) {
 
     $faker->addProvider(new \Faker\Provider\Fakecar($faker));
-    $v = $faker->vehicleArray();
 
     return [
         'model' => $faker->vehicleModel,
