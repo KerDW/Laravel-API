@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/cars', 'CarController@index');
-Route::delete('/cars/{id}', 'CarController@destroy');
+Route::delete('/cars/{car}', 'CarController@destroy');
