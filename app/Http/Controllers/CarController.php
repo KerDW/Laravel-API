@@ -25,10 +25,9 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        foreach(Car::all() as $car){
-            if($car->registration_plate == $request->registration_plate){
-                return response('This registration plate is already in use.', 400);
-            }
+
+        if(Car::where('registration_plate', $request->registration_plate)->first()){
+            return response('This registration plate is already in use.', 400);
         }
 
         $car = new Car();
@@ -59,10 +58,8 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
-        foreach(Car::all() as $otherCar){
-            if($otherCar->registration_plate == $request->registration_plate){
-                return response('This registration plate is already in use.', 400);
-            }
+        if(Car::where('registration_plate', $request->registration_plate)->first()){
+            return response('This registration plate is already in use.', 400);
         }
 
         $car->fill($request->all());
