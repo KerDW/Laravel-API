@@ -17,7 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/cars', 'CarController@index');
-Route::delete('/cars/{car}', 'CarController@destroy');
-Route::post('/cars', 'CarController@store');
-Route::put('/cars/{car}', 'CarController@update');
+// Route::get('/cars', 'CarController@index');
+// Route::delete('/cars/{caR}', 'CarController@destroy');
+// Route::post('/cars', 'CarController@store');
+// Route::put('/cars/{car}', 'CarController@update');
+
+// these two ^ v should be the same
+
+Route::apiResource('cars', 'CarController');
