@@ -1,5 +1,7 @@
 <?php
 
+use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +16,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+WebSocketsRouter::webSocket('/socket', \App\CustomWebSocketHandler::class);
