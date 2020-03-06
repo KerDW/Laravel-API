@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::post('/cars', 'CarController@store');
 // Route::put('/cars/{car}', 'CarController@update');
 
-// these two ^ v should be the same but after using apiResource individual routes should be added above apiResource to avoid conflict
+// after using apiResource individual routes should be added above apiResource to avoid conflict
 
 Route::apiResource('cars', 'CarController');
+Route::apiResource('users', 'UserController');
