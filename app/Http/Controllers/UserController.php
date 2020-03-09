@@ -14,7 +14,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        $users = User::all();
+
+        foreach($users as $user){
+            $user->room;
+        }
+
+        return $users;
     }
 
     /**

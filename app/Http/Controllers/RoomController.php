@@ -15,7 +15,13 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return Room::all();
+        $rooms = Room::all();
+
+        foreach($rooms as $room){
+            $room->users;
+        }
+
+        return $rooms;
     }
 
     /**
