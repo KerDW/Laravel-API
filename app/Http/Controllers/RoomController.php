@@ -17,10 +17,6 @@ class RoomController extends Controller
     {
         $rooms = Room::all();
 
-        foreach($rooms as $room){
-            $room->users;
-        }
-
         return $rooms;
     }
 
