@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Room;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,8 @@ class RoomController extends Controller
         $room = new Room();
 
         $room->fill($request->all());
+        $room->created_at = Carbon::now();
+        $room->updated_at = Carbon::now();
         $room->save();
 
         return $room;
@@ -53,7 +56,11 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+        $room->fill($request->all());
+        $room->updated_at = Carbon::now();
+        $room->save();
+
+        return $room;
     }
 
     /**
