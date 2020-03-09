@@ -9,6 +9,6 @@ class Room extends Model
     protected $guarded = ['id'];
 
     public function users(){
-        return $this->hasMany("App\User", "id", "user_id");
+        return $this->hasMany("App\User");
     }
 }
