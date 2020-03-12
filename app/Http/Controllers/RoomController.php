@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
+
+    protected $customPropertiesExcept = [
+        "user_count",
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -41,9 +46,10 @@ class RoomController extends Controller
     {
         $room = new Room();
 
-        $room->fill($request->all());
+        $room->fill($request->except($this->customPropertiesExcept));
         $room->created_at = Carbon::now();
         $room->updated_at = Carbon::now();
+
         $room->save();
 
         return $room;
