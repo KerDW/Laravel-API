@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -34,6 +35,9 @@ class UserController extends Controller
         $user = new User();
 
         $user->fill($request->all());
+        $user->created_at = Carbon::now();
+        $user->updated_at = Carbon::now();
+
         $user->save();
 
         return $user;
@@ -59,7 +63,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->fill($request->all());
+        $user->updated_at = Carbon::now();
+        $user->save();
+
+        return $user;
     }
 
     /**
