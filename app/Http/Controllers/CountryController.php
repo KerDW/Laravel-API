@@ -65,6 +65,10 @@ class CountryController extends Controller
             try {
                 $country->name = isset($name) ? $name : null;
 
+                if(!$name){
+                    continue;
+                }
+
                 $country->save();
 
                 $countries[] = $country;
