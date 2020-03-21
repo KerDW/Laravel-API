@@ -18,11 +18,22 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $rooms = Room::all();
+        $rooms = null;
+
+        if($request->q){
+
+            $rooms = Room::where('name', 'like', '%'.$request->q.'%')->get()->first();
+
+        } else {
+
+            $rooms = Room::all();
+
+        }
 
         return $rooms;
+
     }
 
     /**

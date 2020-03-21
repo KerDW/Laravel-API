@@ -16,9 +16,21 @@ class CountryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Country::all();
+        $countries = null;
+
+        if($request->q){
+
+            $countries = Country::where('name', 'like', '%'.$request->q.'%')->get()->first();
+
+        } else {
+
+            $countries = Country::all();
+
+        }
+
+        return $countries;
     }
 
     /**
