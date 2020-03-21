@@ -64,7 +64,7 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        $room->fill($request->all());
+        $room->fill($request->except($this->customPropertiesExcept));
         $room->updated_at = Carbon::now();
         $room->save();
 
