@@ -28,7 +28,7 @@ class RoomController extends Controller
 
         } else {
 
-            $rooms = Room::all();
+            $rooms = Room::where('busy', false)->get();
 
         }
 
