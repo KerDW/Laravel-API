@@ -22,7 +22,7 @@ class CountryController extends Controller
 
         if($request->q){
 
-            $countries = Country::where('name', 'like', '%'.$request->q.'%')->get()->first();
+            $countries = Country::where('name', 'like', '%'.$request->q.'%')->get();
 
         } else {
 
