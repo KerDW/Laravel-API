@@ -57,6 +57,10 @@ class RoomController extends Controller
     {
         $room = new Room();
 
+        if(Room::where('name', $request->name)){
+            return response('Duplicated name', 400);
+        }
+
         $room->fill($request->except($this->customPropertiesExcept));
         $room->created_at = Carbon::now();
         $room->updated_at = Carbon::now();
