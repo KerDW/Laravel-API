@@ -55,12 +55,7 @@ class CountryController extends Controller
         if (!$source) {
             $file = Storage::disk("local")->get($filename);
         }
-        /*
-        0Code
-        1Country
-        2Nationality
 
-         */
         $countries = \App\Country::all();
 
         DB::beginTransaction();
