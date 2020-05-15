@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class FilesCleanUpCommand extends Command
 {
-    protected $signature = 'files:cleanup {--directory=*} {--age=7 days}';
+    protected $signature = 'files:cleanup {--directory=*} {--age=7}';
 
     protected $description = 'Cleanup of all the files, not directories, from the specified directories over a certain age.';
 
@@ -22,7 +22,7 @@ class FilesCleanUpCommand extends Command
     {
         $directories = $this->option("directory") ? $this->option("directory") : [0 => 'temp'];
         $files = [];
-        $daysOld = "-".$this->option("age");
+        $daysOld = "-".$this->option("age")." days";
         $age = new Carbon($daysOld);
 
         foreach ($directories as $directory){
